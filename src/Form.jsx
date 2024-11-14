@@ -7,7 +7,7 @@ const DisplayName = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (firstName.trim() && lastName.trim() ||) {
+    if (firstName.trim() && lastName.trim()) {
       setFullName(`${firstName} ${lastName}`);
     } else {
       alert("please fill in both fields");
