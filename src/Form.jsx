@@ -8,54 +8,62 @@ const DisplayName = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Trim and validate inputs for both fields
+    event.preventDefault();
 
     if (firstName.trim() === "" && lastName.trim() === "") {
       // Case: Both fields are empty
-      setFullName`${firstName.trim()} ${lastName.trim()}`
+      setError("Both fields are required.");
+      setFullName(""); // Reset fullName
     } else if (firstName.trim() === "" || lastName.trim() === "") {
       // Case: Only one field is empty
-      setFullName(firstName || lastName);
+      setError("Please fill in both fields.");
+      setFullName(""); // Reset fullName
     } else {
       // Case: Both fields are valid
       setFullName(`${firstName.trim()} ${lastName.trim()}`);
-      setError("");
+      setError(""); // Clear the error
     }
   };
 
   return (
     <div>
-      {" "}
       <form onSubmit={handleSubmit}>
-        <h1>Full Name Display</h1>{" "}
-        {/* First Name Input */}{" "}
-        <label htmlFor="firstName">First Name:</label>{" "}
+        <h1>Full Name Display</h1>
+
+        {/* First Name Input */}
+        <label htmlFor="firstName">First Name:</label>
         <input
           id="firstName"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
-         <br />{/* Last Name Input */}
-        <label htmlFor="lastName">Last Name:</label>{" "}
+        <br />
+
+        {/* Last Name Input */}
+        <label htmlFor="lastName">Last Name:</label>
         <input
           id="lastName"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
-       <br />{" "}
-        <button type="submit">Submit</button>{" "}
+        <br />
+
+        <button type="submit">Submit</button>
       </form>
-      {/* Display error message if validation fails */}{" "}
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-      {/* Display full name if validation passes */}{" "}
-      <h3>Full Name: {fullName}</h3>{" "}
+
+      {/* Display error message if validation fails */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {/* Display full name only when it's set */}
+      {fullName && <h3>Full Name: {fullName}</h3>}
     </div>
   );
 };
 
 export default DisplayName;
+
 
 // 2nd old code
 // import { useState } from 'react';
