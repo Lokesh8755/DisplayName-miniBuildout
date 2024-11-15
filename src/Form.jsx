@@ -17,7 +17,7 @@ const DisplayName = () => {
     } else if (firstName.trim() === "" || lastName.trim() === "") {
       // Case: Only one field is empty
     //   setError("Please fill in both fields.");
-      setFullName(firstName || lastName) // Reset fullName
+      setFullName(""); // Reset fullName
     } else {
       // Case: Both fields are valid
       setFullName(`${firstName.trim()} ${lastName.trim()}`);
